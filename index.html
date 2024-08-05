@@ -21,8 +21,6 @@
 </script>
 <meta name="google-site-verification" content="69etyZNBxcUy3L11p7hipXAxBPdH_XeFz1Q_9CIRCbU">
 <meta content="US" name="geo.country"/>
-<link rel="preconnect" href="https://#/" />
-<link rel="dns-prefetch" href="https://#/" />
 </head>
 <style>
     /* Custom focus style */
@@ -144,7 +142,7 @@
         <h5 class="offcanvas-title" id="mobile-sidebarmenuLabel">
             <img src="https://#/assets/images/precedence-research-logo-dr-1.png" alt="Precedence Research logo" class="img-fluid company-logo" width="150" height="44">
         </h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"><img src="https://#/assets/images/search-icon.png" alt=""></button>
       </div>
        <div class="offcanvas-body">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -199,8 +197,8 @@
                         </div>
                         <div class="wrapper">
                             <div class="text-center">
-                                <a class="navbar-brand" href="https://#/">
-                                    <img src="https://#/assets/images/precedence-research-logo.png" alt="Precedence Research logo" class="img-fluid company-logo" width="200" height="70">
+                                <a class="navbar-brand" href="https://https://www.precedenceresearch.com/">
+                                    <img src="https://www.precedenceresearch.com/assets/images/precedence-research-logo.png" alt="Precedence Research logo" class="img-fluid company-logo" width="200" height="70">
                                 </a>
                             </div>
                             <div id="form">
@@ -1074,8 +1072,278 @@
           </div>
       </div>
 </footer>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+   $(document).ready(function() {
+       $('#subscribe-form').submit(function(e) {
+           e.preventDefault();
+           
+           var subscribeid = $('#subscribe-id').val();
+           
+          if (subscribeid === "" || subscribeid == null) {
+               alert("Please add your Email Id");
+               return;
+           }
+           
+           var submitButton = $('#subscribeBtn');
+   
+           // Disable the submit button
+           submitButton.prop('disabled', true);
+           
+           $.ajax({
+   url: "https://#/subscribe_action.php",
+   type: "POST",
+   data: {subscribeid:subscribeid},
+   cache: false,
+     beforeSend: function(){
+           },
+   success: function(dataResult){
+       alert("You have successfully subscribed to our service.");
+   }
+ });
+       });
+   });
+</script> 
+  <script type="text/javascript">
+   $(document).ready(function() {
+       $("#loader1").show(); 
+    $.ajax({
+   url: "https://#/manage-report-pagination.php",
+   type: "GET",
+   data: {
+     page : "1"
+   },
+   cache: false,
+     beforeSend: function(){
+           },
+   success: function(dataResult){
+       $("#loader1").hide();
+     $("#target-content").html(dataResult);
+     $(".pageitem").removeClass("active");
+     $("#1").addClass("active");
+     $("html, body").animate({ scrollTop: 0 });
+   }
+ });
+   });
+</script>
+<script>
+window.onscroll = function() {myFunction()};
+function myFunction() 
+{
+   var header = document.getElementById("myHeader");
+   var sticky = header.offsetTop;
+   if (window.pageYOffset > 380) 
+   {   
+       //header.classList.add("sticky");
+        header.classList.add("sticky");
+       //document.getElementById("myHeader").style.display = "block";
+   } 
+   else 
+   {   //alert("dd");
+       // header.style.position = "unset";
+       header.classList.remove("sticky");
+       // detail_sticky.style.display = "none";
+   }
+}
+</script> 
+<script>
+$(document).ready(function(){
+$(function() { 
+    
+   $('.search-menu').removeClass('toggled');
+
+   $('.search-icon').click(function(e) {
+       e.stopPropagation();
+       $('.search-menu').toggleClass('toggled');
+       $('.popup-search').focus();
+   });
+
+   $('.search-menu input').click(function(e) {
+       e.stopPropagation();
+   });
+
+  /* $('.search-menu, body').click(function() {
+       $('.search-menu').removeClass('toggled');
+   });*/
+   
+   $('.search-bar-close').click(function() {
+       $("#popupsearch").val("");
+       $("#searchpopup").fadeOut();
+       $("#searchpopup").html("");
+       $('.search-menu').removeClass('toggled');
+   });
+});
+});
+</script>
+<script>
+$(document).ready(function() {
+// Function to handle search button click or enter key press
+function search_button(keyword) {
+   var selkeyword = keyword || $('#search-holder').val();
+   if (!selkeyword) {
+       alert("Please enter a keyword");
+       return;
+   }
+   var url = "https://#/search.php?q=" + encodeURIComponent(selkeyword);
+   window.location.href = url;
+}
+// Event listener for the enter key in the search input
+$('#search-holder').on('keypress', function(event) {
+   if (event.keyCode === 13) {
+       event.preventDefault(); // Prevent default form submission behavior
+       search_button(); // Call your search function
+   }
+});
+// Add click event listeners to all <a> tags within the list items
+$('.tagList-item .tags').on('click', function(event) {
+   event.preventDefault(); // Prevent the default action (navigation)
+   var text = $(this).text().trim().replace(/\s+/g, '-').toLowerCase();
+   var url = "https://#/" + text;
+   window.location.href = url;
+});
+// Speech recognition setup
+var voiceSpeak = $('#voiceSpeak'); 
+var voiceGif = $('#voiceGif');
+var searchInput = $('#search-holder');
+// Check if SpeechRecognition API is available
+var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (SpeechRecognition) {
+   var recognition = new SpeechRecognition();
+   recognition.continuous = false;
+   recognition.interimResults = false;
+   recognition.lang = 'en-US';
+   // Event listener for the voice search button
+   voiceSpeak.on('click', function() {
+       try {
+           recognition.start();
+       } catch (error) {
+           console.error('Speech recognition start error:', error);
+       }
+   });
+   recognition.onstart = function() {
+       console.log('Speech recognition started');
+       voiceSpeak.hide();
+       voiceGif.show(); // Show the recording GIF
+   };
+   recognition.onend = function() {
+       console.log('Speech recognition ended');
+       voiceSpeak.show();
+       voiceGif.hide(); // Hide the recording GIF
+   };
+   recognition.onresult = function(event) {
+       console.log('Speech recognition result:', event);
+       var transcript = event.results[0][0].transcript;
+       searchInput.val(transcript);
+       search_button(transcript); // Perform search with the recognized speech
+   };
+   recognition.onerror = function(event) {
+       console.error('Speech recognition error detected:', event.error);
+       voiceSpeak.show();
+       voiceGif.hide(); // Hide the recording GIF
+   };
+} else {
+   console.error('Speech recognition not supported in this browser.');
+}
+});
+</script>
+<script>
+function search_button() {
+var searchInput = document.getElementById('search-holder').value;
+if (searchInput.trim() !== '') {
+   // Redirect to search results page with query parameter
+   window.location.href = '/search?q=' + encodeURIComponent(searchInput);
+} 
+}
+</script>
+<!--Search For Mobile  -->
+<script>
+$(document).ready(function() {
+// Function to handle search button click or enter key press
+function search_buttonMob(keyword) {
+   var selkeyword = keyword || $('#search-holderMob').val();
+   if (!selkeyword) { 
+       alert("Please enter a keyword");
+       return;
+   }
+   var url = "https://#/search.php?q=" + encodeURIComponent(selkeyword);
+   window.location.href = url;
+}
+// Event listener for the enter key in the search input
+$('#search-holderMob').on('keypress', function(event) {
+   if (event.keyCode === 13) {
+       event.preventDefault(); // Prevent default form submission behavior
+       search_buttonMob(); // Call your search function
+   }
+});
+// Add click event listeners to all <a> tags within the list items
+$('.tagList-item .tags').on('click', function(event) {
+   event.preventDefault(); // Prevent the default action (navigation)
+   var text = $(this).text().trim().replace(/\s+/g, '-').toLowerCase();
+   var url = "https://#/" + text;
+   window.location.href = url;
+});
+// Speech recognition setup
+var voiceSpeak = $('#voiceSpeakMob');
+var voiceGif = $('#voiceGifMob');
+var searchInput = $('#search-holderMob');
+var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.continuous = false;
+recognition.interimResults = false;
+recognition.lang = 'en-US';
+// Event listener for the voice search button
+voiceSpeak.on('click', function() {
+   recognition.start();
+});
+recognition.onstart = function() {
+   voiceSpeak.hide();
+   voiceGif.show(); // Show the recording GIF
+};
+recognition.onend = function() {
+   voiceSpeak.show();
+   voiceGif.hide(); // Hide the recording GIF
+};
+recognition.onresult = function(event) {
+   var transcript = event.results[0][0].transcript;
+   searchInput.val(transcript);
+   search_buttonMob(transcript); // Perform search with the recognized speech
+};
+recognition.onerror = function(event) {
+   console.error('Speech recognition error detected: ' + event.error);
+   voiceSpeak.show();
+   voiceGif.hide(); // Hide the recording GIF
+};
+});
+</script>
+<script>
+$(document).ready(function() {
+$('.MobSlide').on('click', function(e) {
+   e.preventDefault(); // Prevent default behavior
+   var target = $($(this).attr('data-bs-target'));
+   $(target).stop(true, true).slideToggle(); // Use stop() to prevent animation queue buildup
+});
+});
+</script>
+<script>
+function updateProgressBar() {
+const progressBar = document.querySelector('.progress-bar');
+const totalHeight = document.body.scrollHeight - window.innerHeight;
+const progress = (window.pageYOffset / totalHeight) * 100;
+progressBar.style.width = progress + '%';
+}
+updateProgressBar(); 
+window.addEventListener('scroll', updateProgressBar);
+window.addEventListener('resize', updateProgressBar);
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+       var topBannerNew = document.querySelector('.top-banner-new');
+       if (topBannerNew) {
+           topBannerNew.classList.add('gradient-bg');
+       }
+   });
+</script>
+
 
   </body>
 </html>
